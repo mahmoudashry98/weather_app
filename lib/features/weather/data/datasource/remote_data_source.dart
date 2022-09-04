@@ -13,7 +13,7 @@ class RemoteDataSource implements BaseRemoteDataSource {
   Future<WeatherModel> getWeatherDataSource(String cityName) async {
     var response =
         await Dio().get(EndPoint.weatherData + cityName + EndPoint.apiKey);
-    print(response.data);
+    //print(response.data);
     if (response.statusCode == 200) {
       return WeatherModel.fromJson(response.data);
     } else {

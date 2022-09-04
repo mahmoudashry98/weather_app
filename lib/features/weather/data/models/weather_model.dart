@@ -1,8 +1,10 @@
+import 'package:weather_app/core/utils/app_string.dart';
 import 'package:weather_app/features/weather/domain/entities/weather.dart';
 
 class WeatherModel extends Weather {
   const WeatherModel({
     required super.id,
+    required super.timezone,
     required super.cityName,
     required super.main,
     required super.description,
@@ -14,25 +16,28 @@ class WeatherModel extends Weather {
     required super.humidity,
     required super.speed,
     required super.clouds,
+    required super.country,
     required super.sunrise,
     required super.sunset,
   });
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
-        id: json['id'],
-        cityName: json['name'],
-        main: json['weather'][0]['main'],
-        description: json['weather'][0]['description'],
-        temp: json['main']['temp'],
-        feelsLike: json['main']['feels_like'],
-        tempMin: json['main']['temp_min'],
-        tempMax: json['main']['temp_max'],
-        pressure: json['main']['pressure'],
-        humidity: json['main']['humidity'],
-        speed: json['wind']['speed'],
-        clouds: json['clouds']['all'],
-        sunrise: json['sys']['sunrise'],
-        sunset: json['sys']['sunset'],
+        id: json[AppString.id],
+        timezone: json[AppString.timezone],
+        cityName: json[AppString.cityName],
+        main: json[AppString.weather][0][AppString.main],
+        description: json[AppString.weather][0][AppString.description],
+        temp: json[AppString.main][AppString.temp],
+        feelsLike: json[AppString.main][AppString.feelsLike],
+        tempMin: json[AppString.main][AppString.tempMin],
+        tempMax: json[AppString.main][AppString.tempMax],
+        pressure: json[AppString.main][AppString.pressure],
+        humidity: json[AppString.main][AppString.humidity],
+        speed: json[AppString.wind][AppString.speed],
+        clouds: json[AppString.clouds][AppString.all],
+        country: json[AppString.sys][AppString.country],
+        sunrise: json[AppString.sys][AppString.sunrise],
+        sunset: json[AppString.sys][AppString.sunset],
       );
 
   

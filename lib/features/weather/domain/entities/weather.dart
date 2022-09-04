@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable {
   final int id;
+  final int timezone;
   final String cityName;
   final String main;
   final String description;
@@ -13,11 +14,13 @@ class Weather extends Equatable {
   final int humidity;
   final double speed;
   final int clouds;
+  final String country;
   final int sunrise;
   final int sunset;
 
   const Weather({
     required this.id,
+    required this.timezone,
     required this.cityName,
     required this.main,
     required this.description,
@@ -29,6 +32,7 @@ class Weather extends Equatable {
     required this.humidity,
     required this.speed,
     required this.clouds,
+    required this.country,
     required this.sunrise,
     required this.sunset,
   });
@@ -36,6 +40,7 @@ class Weather extends Equatable {
 @override
   List<Object?> get props => [
         id,
+        timezone,
         cityName,
         main,
         description,
@@ -47,6 +52,7 @@ class Weather extends Equatable {
         humidity,
         speed,
         clouds,
+        country,
         sunrise,
         sunset,
       ];
