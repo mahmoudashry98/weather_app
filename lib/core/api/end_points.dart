@@ -1,7 +1,6 @@
 class EndPoint {
   static const String baseUrl = 'https://api.openweathermap.org/data/2.5';
-  static const String apiKey = '&appid=c6fc640741a8dc1dd3501bc61a2380df';
+  static const String apiKey = '&appid=bc74f05db9de01159b4d59a0d8ee6d30';
 
-  static const String weatherData = '$baseUrl/weather?q=';
+  static const String weatherData = '$baseUrl/forecast?q=';
 }
-// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
