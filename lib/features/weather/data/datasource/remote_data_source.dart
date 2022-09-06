@@ -18,7 +18,7 @@ class RemoteDataSource implements BaseRemoteDataSource {
       return WeatherModel.fromJson(response.data);
     } else {
       throw ServerExceptions(
-          errorMessageModel: ErrorMessageModel.fromJson(response.data));
+          errorMessageModel: ErrorMessageModel.fromJson(response.data),);
     }
   }
 }

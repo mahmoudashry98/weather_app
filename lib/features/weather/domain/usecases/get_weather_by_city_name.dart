@@ -4,12 +4,12 @@ import 'package:weather_app/features/weather/domain/repository/base_weather_repo
 
 import '../../../../core/error/failures.dart';
 
-class GetWeatherByCityName {
+class GetWeatherByCityNameUseCase {
   final BaseWeatherRepository baseWeatherRepository;
 
-  GetWeatherByCityName(this.baseWeatherRepository);
+  GetWeatherByCityNameUseCase(this.baseWeatherRepository);
 
-  Future<Either<Failure, Weather>>  execute(String cityName) async {
+  Future<Either<Failure, WeatherEntities>> execute(String cityName) async {
     return await baseWeatherRepository.getWeatherByCityName(cityName);
   }
 }
