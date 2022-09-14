@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/config/services/services_locator.dart';
+import 'package:weather_app/features/weather/presetation/cubit/cubit.dart';
 
 import 'bloc_observer.dart';
 import 'config/routes/app_routes.dart';
@@ -15,6 +17,7 @@ void main() {
         ),
   );
   WidgetsFlutterBinding.ensureInitialized();
+  ServicesLocator().init();
   Bloc.observer = MyBlocObserver();
 
   runApp(const MyApp());
@@ -25,26 +28,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appTheme(),
-      routes: routes,
+    print('build main');
+    return BlocProvider(
+      create: (context) => AppCubit(sl(),sl()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: appTheme(),
+        routes: routes,
+      ),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }

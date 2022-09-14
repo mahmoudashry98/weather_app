@@ -1,164 +1,159 @@
 import 'package:equatable/equatable.dart';
 
 class WeatherEntities extends Equatable {
-  final List<WeatherDay> weatherDay;
-  final City city;
+  final Location location;
+  final Current current;
+  final Forecast forecast;
 
   const WeatherEntities({
-    required this.weatherDay,
-    required this.city,
+    required this.location,
+    required this.current,
+    required this.forecast,
   });
 
   @override
   List<Object?> get props => [
-        weatherDay,
-        city,
+        location,
+        current,
+        forecast,
       ];
 }
 
-class WeatherDay extends Equatable {
-  final int dt;
-  final Main main;
-  final List<Weather> weather;
-  final Clouds clouds;
-  final Wind wind;
-  final String dtTxt;
-
-  const WeatherDay({
-    required this.dt,
-    required this.main,
-    required this.weather,
-    required this.clouds,
-    required this.wind,
-    required this.dtTxt,
-  });
-
-  @override
-  List<Object?> get props => [
-        dt,
-        main,
-        weather,
-        clouds,
-        wind,
-        dtTxt,
-      ];
-}
-
-class Main extends Equatable {
-  final double temp;
-  final double feelsLike;
-  final double tempMin;
-  final double tempMax;
-  final int pressure;
-  final int humidity;
-
-  const Main({
-    required this.temp,
-    required this.feelsLike,
-    required this.tempMin,
-    required this.tempMax,
-    required this.pressure,
-    required this.humidity,
-  });
-
-  @override
-  List<Object?> get props => [
-        temp,
-        feelsLike,
-        tempMin,
-        tempMax,
-        pressure,
-        humidity,
-      ];
-}
-
-class Weather extends Equatable {
-  final int id;
-  final String main;
-  final String description;
-  const Weather({
-    required this.id,
-    required this.main,
-    required this.description,
-  });
-  @override
-  List<Object?> get props => [
-    id,
-    main,
-    description,
-  ];
-}
-
-class Clouds extends Equatable {
-  final int all;
-  const Clouds({
-    required this.all,
-  });
-
-  @override
-  List<Object?> get props => [
-        all,
-      ];
-}
-
-class Wind extends Equatable {
-  final double speed;
-  final int deg;
-
-  const Wind({
-    required this.speed,
-    required this.deg,
-  });
-
-  @override
-  List<Object?> get props => [
-        speed,
-        deg,
-      ];
-}
-
-class City extends Equatable {
-  final int id;
+class Location extends Equatable {
   final String name;
-  final Coord coord;
   final String country;
-  final int timezone;
-  final int sunrise;
-  final int sunset;
-  const City({
-    required this.id,
+  final double lat;
+  final double lon;
+  final int localtimeEpoch;
+  final String localtime;
+
+  const Location({
     required this.name,
-    required this.coord,
     required this.country,
-    required this.timezone,
+    required this.lat,
+    required this.lon,
+    required this.localtimeEpoch,
+    required this.localtime,
+  });
+  @override
+  List<Object?> get props => [
+        name,
+        country,
+        lat,
+        lon,
+        localtimeEpoch,
+        localtime,
+      ];
+}
+
+class Current extends Equatable {
+  final double tempC;
+
+  final double windKph;
+  final int humidity;
+  final int cloud;
+  final double feelslikeC;
+
+  const Current({
+    required this.tempC,
+    required this.windKph,
+    required this.humidity,
+    required this.cloud,
+    required this.feelslikeC,
+  });
+  @override
+  List<Object?> get props => [
+        tempC,
+        windKph,
+        humidity,
+        cloud,
+        feelslikeC,
+      ];
+}
+
+class Forecast extends Equatable {
+  final List<Forecastday> forecastday;
+  
+  const Forecast({
+    required this.forecastday,
+  });
+  @override
+  List<Object?> get props => [
+        forecastday,
+      ];
+}
+
+class Forecastday extends Equatable {
+  final String date;
+  final int dateEpoch;
+  final Day day;
+  final Astro astro;
+  final List<Hour> hour;
+
+  const Forecastday({
+    required this.date,
+    required this.dateEpoch,
+    required this.day,
+    required this.astro,
+    required this.hour,
+  });
+  @override
+  List<Object?> get props => [
+        date,
+        dateEpoch,
+        day,
+        astro,
+        hour,
+      ];
+}
+
+class Day extends Equatable {
+  final double maxtempC;
+  final double mintempC;
+  final int dailyChanceOfRain;
+
+  const Day({
+    required this.maxtempC,
+    required this.mintempC,
+    required this.dailyChanceOfRain,
+  });
+  @override
+  List<Object?> get props => [
+        maxtempC,
+        mintempC,
+        dailyChanceOfRain,
+      ];
+}
+
+class Astro extends Equatable {
+  final String sunrise;
+  final String sunset;
+
+  const Astro({
     required this.sunrise,
     required this.sunset,
   });
-
   @override
   List<Object?> get props => [
-        id,
-        name,
-        coord,
-        country,
-        timezone,
         sunrise,
         sunset,
       ];
 }
 
-class Coord extends Equatable {
-  final double lat;
-  final double lon;
+class Hour extends Equatable {
+  final String time;
+  final double tempC;
+  final int chanceOfRain;
 
-  const Coord({
-    required this.lat,
-    required this.lon,
+  const Hour({
+    required this.time,
+    required this.tempC,
+    required this.chanceOfRain,
   });
-
   @override
   List<Object?> get props => [
-        lat,
-        lon,
+        time,
+        tempC,
+        chanceOfRain,
       ];
 }

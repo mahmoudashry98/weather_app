@@ -1,141 +1,125 @@
 
 import 'package:weather_app/features/weather/domain/entities/weather.dart';
 
-
 class WeatherModel extends WeatherEntities {
   const WeatherModel({
-    required super.weatherDay,
-    required super.city,
-  });
-  factory WeatherModel.fromJson(Map<String, dynamic> json) {
-    
-    return WeatherModel(
-        weatherDay: List<WeatherDayModel>.from(json["list"].map((x) => WeatherDayModel.fromJson(x))),
-        
-        city: CityModel.fromJson(json['city']));
-  }
-}
-
-
-class WeatherDayModel extends WeatherDay {
-  const WeatherDayModel({
-    required super.dt,
-    required super.main,
-    required super.weather,
-    required super.clouds,
-    required super.wind,
-    required super.dtTxt,
-  });
-  factory WeatherDayModel.fromJson(Map<String, dynamic> json) {
-    
-    return WeatherDayModel(
-      dt: json['dt'],
-      main: MainModel.fromJson(json['main']),
-      weather: List<MainWeatherModel>.from(json["weather"].map((x) => MainWeatherModel.fromJson(x))),
-      clouds: CloudsModel.fromJson(json['clouds']),
-      wind: WindModel.fromJson(json["wind"]),
-      dtTxt: json['dt_txt'],
-    );
-  }
-}
-
-class MainModel extends Main {
-  const MainModel({
-    required super.temp,
-    required super.feelsLike,
-    required super.tempMin,
-    required super.tempMax,
-    required super.pressure,
-    required super.humidity,
+    required super.location,
+    required super.current,
+    required super.forecast,
   });
 
-  factory MainModel.fromJson(Map<String, dynamic> json) {
-    return MainModel(
-      temp: json['temp'].toDouble(),
-      feelsLike: json['feels_like'].toDouble(),
-      tempMin: json['temp_min'].toDouble(),
-      tempMax: json['temp_max'].toDouble(),
-      pressure: json['pressure'],
-      humidity: json['humidity'],
-    );
-  }
+  factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
+        location: LocationModel.fromJson(json["location"]),
+        current: CurrentModel.fromJson(json["current"]),
+        forecast: ForecastModel.fromJson(json["forecast"]),
+      );
 }
 
-class MainWeatherModel extends Weather {
-  const MainWeatherModel({
-    required super.id,
-    required super.main,
-    required super.description,
-  });
-
-  factory MainWeatherModel.fromJson(Map<String, dynamic> json) {
-    return MainWeatherModel(
-      id: json['id'],
-      main: json['main'],
-      description: json['description'],
-    );
-  }
-}
-
-class CloudsModel extends Clouds {
-  const CloudsModel({
-    required super.all,
-  });
-
-  factory CloudsModel.fromJson(Map<String, dynamic> json) {
-    return CloudsModel(
-      all: json['all'],
-    );
-  }
-}
-
-class WindModel extends Wind {
-  const WindModel({
-    required super.speed,
-    required super.deg,
-  });
-
-  factory WindModel.fromJson(Map<String, dynamic> json) {
-    return WindModel(
-      speed: json["speed"].toDouble(),
-      deg: json['deg'],
-    );
-  }
-}
-
-class CityModel extends City {
-  const CityModel({
-    required super.id,
+class LocationModel extends Location {
+  const LocationModel({
     required super.name,
-    required super.coord,
     required super.country,
-    required super.timezone,
+    required super.lat,
+    required super.lon,
+    required super.localtimeEpoch,
+    required super.localtime,
+  });
+
+  factory LocationModel.fromJson(Map<String, dynamic> json) => LocationModel(
+        name: json["name"],
+        country: json["country"],
+        lat: json["lat"].toDouble(),
+        lon: json["lon"].toDouble(),
+        localtimeEpoch: json["localtime_epoch"],
+        localtime: json["localtime"],
+      );
+}
+
+class CurrentModel extends Current {
+  const CurrentModel({
+    required super.tempC,
+    required super.windKph,
+    required super.humidity,
+    required super.cloud,
+    required super.feelslikeC,
+  });
+  factory CurrentModel.fromJson(Map<String, dynamic> json) => CurrentModel(
+        tempC: json["temp_c"].toDouble(),
+        windKph: json["wind_kph"].toDouble(),
+        humidity: json["humidity"],
+        cloud: json["cloud"],
+        feelslikeC: json["feelslike_c"].toDouble(),
+      );
+}
+
+class ForecastModel extends Forecast {
+  const ForecastModel({
+    required super.forecastday,
+  });
+
+  factory ForecastModel.fromJson(Map<String, dynamic> json) {
+    return ForecastModel(
+      forecastday:  List<ForecastDayModel>.from(json["forecastday"].map((x) => ForecastDayModel.fromJson(x))),
+    );
+  }
+}
+
+class ForecastDayModel extends Forecastday {
+  const ForecastDayModel({
+    required super.date,
+    required super.dateEpoch,
+    required super.day,
+    required super.astro,
+    required super.hour,
+  });
+
+  factory ForecastDayModel.fromJson(Map<String, dynamic> json) =>
+      ForecastDayModel(
+        date: json["date"],
+        dateEpoch: json["date_epoch"],
+        day: DayModel.fromJson(json["day"]),
+        astro: AstroModel.fromJson(json["astro"]),
+        hour: List<HourModel>.from(
+            json["hour"]?.map((x) => HourModel.fromJson(x))),
+      );
+}
+
+class DayModel extends Day {
+  const DayModel({
+    required super.maxtempC,
+    required super.mintempC,
+    required super.dailyChanceOfRain,
+  });
+
+  factory DayModel.fromJson(Map<String, dynamic> json) => DayModel(
+        maxtempC: json["maxtemp_c"].toDouble(),
+        mintempC: json["mintemp_c"].toDouble(),
+        dailyChanceOfRain: json["daily_chance_of_rain"],
+      );
+}
+
+class AstroModel extends Astro {
+  const AstroModel({
     required super.sunrise,
     required super.sunset,
   });
-  factory CityModel.fromJson(Map<String, dynamic> json) {
-    return CityModel(
-      id: json['id'],
-      name: json['name'],
-      coord: CoordModel.fromJson(json['coord']),
-      country: json['country'],
-      timezone: json['timezone'],
-      sunrise: json['sunrise'],
-      sunset: json['sunset'],
-    );
-  }
+
+  factory AstroModel.fromJson(Map<String, dynamic> json) => AstroModel(
+        sunrise: json["sunrise"],
+        sunset: json["sunset"],
+      );
 }
 
-class CoordModel extends Coord {
-  const CoordModel({
-    required super.lat,
-    required super.lon,
+class HourModel extends Hour {
+  const HourModel({
+    required super.time,
+    required super.tempC,
+    required super.chanceOfRain,
   });
 
-  factory CoordModel.fromJson(Map<String, dynamic> json) {
-    return CoordModel(
-      lat: json['lat'],
-      lon: json['lon'],
-    );
-  }
+  factory HourModel.fromJson(Map<String, dynamic> json) => HourModel(
+        time: json["time"],
+        tempC: json["temp_c"],
+        chanceOfRain: json["chance_of_rain"],
+      );
 }
