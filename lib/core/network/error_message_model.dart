@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:weather_app/core/utils/app_string.dart';
 
 class ErrorMessageModel extends Equatable {
   final String cod;
@@ -8,8 +9,8 @@ class ErrorMessageModel extends Equatable {
 
   factory ErrorMessageModel.fromJson(Map<String, dynamic> json) {
     return ErrorMessageModel(
-      cod: json['cod'],
-      message: json['message'],
+      cod: json[AppString.cod],
+      message: json[AppString.message],
     );
   }
 

@@ -20,13 +20,13 @@ class GetForecastWeatherByCityNameUseCase
 
 class WeatherParameters extends Equatable {
   final String? cityName;
-  final int day;
+  final int? day;
   final double? lat;
   final double? lon;
 
   const WeatherParameters({
     this.cityName,
-    required this.day,
+    this.day,
     this.lat,
     this.lon,
   });
@@ -34,5 +34,7 @@ class WeatherParameters extends Equatable {
   List<Object?> get props => [
         cityName,
         day,
+        lat,
+        lon,
       ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/core/utils/app_string.dart';
 
 import 'package:weather_app/core/utils/media_query_values.dart';
 import 'package:weather_app/features/weather/presetation/cubit/cubit.dart';
@@ -25,7 +26,7 @@ class CurrentWindAndHumidity extends StatelessWidget {
           case RequestState.loaded:
             return Container(
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: AppColors.whiteWithOpacity,
                 borderRadius: BorderRadius.circular(25),
               ),
               height: context.height * 0.18,
@@ -47,9 +48,9 @@ class CurrentWindAndHumidity extends StatelessWidget {
                           height: 5,
                         ),
                         CustomText(
-                          text: 'UV index',
+                          text: AppString.uvIndex,
                           size: 16,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(
@@ -58,7 +59,7 @@ class CurrentWindAndHumidity extends StatelessWidget {
                         CustomText(
                           text: '${state.weatherEntities!.current.cloud}',
                           size: 14,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w400,
                         ),
                       ],
@@ -67,7 +68,7 @@ class CurrentWindAndHumidity extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
                       height: 120,
                       width: 2,
-                      color: Colors.grey[400],
+                      color: AppColors.lightGrey,
                     ),
                     Column(
                       children: [
@@ -81,9 +82,9 @@ class CurrentWindAndHumidity extends StatelessWidget {
                           height: 5,
                         ),
                         CustomText(
-                          text: 'Wind',
+                          text: AppString.upperwind,
                           size: 16,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(
@@ -93,7 +94,7 @@ class CurrentWindAndHumidity extends StatelessWidget {
                           text:
                               '${state.weatherEntities!.current.windKph} km/h',
                           size: 14,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w400,
                         ),
                       ],
@@ -102,7 +103,7 @@ class CurrentWindAndHumidity extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
                       height: 120,
                       width: 2,
-                      color: Colors.grey[400],
+                      color: AppColors.lightGrey,
                     ),
                     Column(
                       children: [
@@ -116,9 +117,9 @@ class CurrentWindAndHumidity extends StatelessWidget {
                           height: 5,
                         ),
                         CustomText(
-                          text: 'Humidity',
+                          text: AppString.upperhumidity,
                           size: 16,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(
@@ -127,7 +128,7 @@ class CurrentWindAndHumidity extends StatelessWidget {
                         CustomText(
                           text: '${state.weatherEntities!.current.humidity} %',
                           size: 14,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w400,
                         ),
                       ],

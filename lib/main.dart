@@ -7,14 +7,15 @@ import 'package:weather_app/features/weather/presetation/cubit/cubit.dart';
 import 'bloc_observer.dart';
 import 'config/routes/app_routes.dart';
 import 'config/theme/theme_app.dart';
+import 'core/utils/app_theme_colors.dart';
 
 void main() {
   //change color in status screen
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-        // navigation bar color
-        statusBarColor: Colors.grey[300] // status bar color
-        ),
+      // navigation bar color
+      statusBarColor: AppColors.primaryColor, // status bar color
+    ),
   );
   WidgetsFlutterBinding.ensureInitialized();
   ServicesLocator().init();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     print('build main');
     return BlocProvider(
-      create: (context) => AppCubit(sl(),sl()),
+      create: (context) => AppCubit(sl(), sl()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: appTheme(),

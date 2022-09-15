@@ -12,8 +12,8 @@ class WeatherRepository extends BaseWeatherRepository {
   WeatherRepository(this.baseRemoteDataSource);
 
   @override
-  Future<Either<Failure, WeatherEntities>> getWeatherByCityName(String cityName) async {
-    final result = await baseRemoteDataSource.getWeatherDataSource(cityName);
+  Future<Either<Failure, WeatherEntities>> getWeatherByCityName(WeatherParameters parameters) async {
+    final result = await baseRemoteDataSource.getWeatherDataSource(parameters);
 
     try {
       return Right(result);

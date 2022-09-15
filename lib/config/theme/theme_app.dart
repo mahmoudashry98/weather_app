@@ -4,7 +4,7 @@ import '../../core/utils/app_theme_colors.dart';
 
 ThemeData appTheme() {
   return ThemeData(
-    primarySwatch: AppColors.primaryColor,
+    primaryColor: const Color(0xff84a8e6),
     
   );
 }

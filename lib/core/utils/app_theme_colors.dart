@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static MaterialColor primaryColor = Colors.lightBlue;
+  // static MaterialColor primaryColor = Color(v);
   static Color textWhite = Colors.white;
   static Color textBlack = Colors.black;
+
   /// scaffold background colors
   static Color lightGrey = Colors.grey.shade100;
   static const Color black = Colors.black;
+  static  Color greyLight = Colors.grey[400]!;
+
+  static Color primaryColor = const Color(0xff84a8e6);
+  static Color whiteWithOpacity = const Color.fromRGBO(
+    255,
+    255,
+    255,
+    230,
+  );
 
   /// card colors
   static Color dividerLightGrey = Colors.grey.shade300;

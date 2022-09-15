@@ -1,4 +1,4 @@
-
+import 'package:weather_app/core/utils/app_string.dart';
 import 'package:weather_app/features/weather/domain/entities/weather.dart';
 
 class WeatherModel extends WeatherEntities {
@@ -9,9 +9,9 @@ class WeatherModel extends WeatherEntities {
   });
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
-        location: LocationModel.fromJson(json["location"]),
-        current: CurrentModel.fromJson(json["current"]),
-        forecast: ForecastModel.fromJson(json["forecast"]),
+        location: LocationModel.fromJson(json[AppString.location]),
+        current: CurrentModel.fromJson(json[AppString.current]),
+        forecast: ForecastModel.fromJson(json[AppString.forecast]),
       );
 }
 
@@ -26,12 +26,12 @@ class LocationModel extends Location {
   });
 
   factory LocationModel.fromJson(Map<String, dynamic> json) => LocationModel(
-        name: json["name"],
-        country: json["country"],
-        lat: json["lat"].toDouble(),
-        lon: json["lon"].toDouble(),
-        localtimeEpoch: json["localtime_epoch"],
-        localtime: json["localtime"],
+        name: json[AppString.cityName],
+        country: json[AppString.country],
+        lat: json[AppString.lat].toDouble(),
+        lon: json[AppString.lon].toDouble(),
+        localtimeEpoch: json[AppString.localtimeEpoch],
+        localtime: json[AppString.localtime],
       );
 }
 
@@ -44,11 +44,11 @@ class CurrentModel extends Current {
     required super.feelslikeC,
   });
   factory CurrentModel.fromJson(Map<String, dynamic> json) => CurrentModel(
-        tempC: json["temp_c"].toDouble(),
-        windKph: json["wind_kph"].toDouble(),
-        humidity: json["humidity"],
-        cloud: json["cloud"],
-        feelslikeC: json["feelslike_c"].toDouble(),
+        tempC: json[AppString.temp].toDouble(),
+        windKph: json[AppString.wind].toDouble(),
+        humidity: json[AppString.humidity],
+        cloud: json[AppString.clouds],
+        feelslikeC: json[AppString.feelsLike].toDouble(),
       );
 }
 
@@ -59,7 +59,8 @@ class ForecastModel extends Forecast {
 
   factory ForecastModel.fromJson(Map<String, dynamic> json) {
     return ForecastModel(
-      forecastday:  List<ForecastDayModel>.from(json["forecastday"].map((x) => ForecastDayModel.fromJson(x))),
+      forecastday: List<ForecastDayModel>.from(
+          json[AppString.forecastday].map((x) => ForecastDayModel.fromJson(x))),
     );
   }
 }
@@ -75,12 +76,12 @@ class ForecastDayModel extends Forecastday {
 
   factory ForecastDayModel.fromJson(Map<String, dynamic> json) =>
       ForecastDayModel(
-        date: json["date"],
-        dateEpoch: json["date_epoch"],
-        day: DayModel.fromJson(json["day"]),
-        astro: AstroModel.fromJson(json["astro"]),
+        date: json[AppString.date],
+        dateEpoch: json[AppString.dateEpoch],
+        day: DayModel.fromJson(json[AppString.day]),
+        astro: AstroModel.fromJson(json[AppString.astro]),
         hour: List<HourModel>.from(
-            json["hour"]?.map((x) => HourModel.fromJson(x))),
+            json[AppString.hour]?.map((x) => HourModel.fromJson(x))),
       );
 }
 
@@ -92,9 +93,9 @@ class DayModel extends Day {
   });
 
   factory DayModel.fromJson(Map<String, dynamic> json) => DayModel(
-        maxtempC: json["maxtemp_c"].toDouble(),
-        mintempC: json["mintemp_c"].toDouble(),
-        dailyChanceOfRain: json["daily_chance_of_rain"],
+        maxtempC: json[AppString.tempMax].toDouble(),
+        mintempC: json[AppString.tempMin].toDouble(),
+        dailyChanceOfRain: json[AppString.dailyChanceOfRain],
       );
 }
 
@@ -105,8 +106,8 @@ class AstroModel extends Astro {
   });
 
   factory AstroModel.fromJson(Map<String, dynamic> json) => AstroModel(
-        sunrise: json["sunrise"],
-        sunset: json["sunset"],
+        sunrise: json[AppString.sunrise],
+        sunset: json[AppString.sunset],
       );
 }
 
@@ -118,8 +119,8 @@ class HourModel extends Hour {
   });
 
   factory HourModel.fromJson(Map<String, dynamic> json) => HourModel(
-        time: json["time"],
-        tempC: json["temp_c"],
-        chanceOfRain: json["chance_of_rain"],
+        time: json[AppString.time],
+        tempC: json[AppString.temp],
+        chanceOfRain: json[AppString.chanceOfRain],
       );
 }

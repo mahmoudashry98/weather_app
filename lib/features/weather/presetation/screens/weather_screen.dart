@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/core/utils/app_theme_colors.dart';
 import 'package:weather_app/features/weather/presetation/widgets/drawer.dart';
 import '../../../../config/services/services_locator.dart';
 
@@ -18,18 +19,19 @@ class HomeWeatherscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {
-      
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Colors.grey[200],
-          drawer: const Drawer(child: DrawerWidget()),
+          backgroundColor: AppColors.primaryColor,
+          drawer: Drawer(
+            backgroundColor: AppColors.primaryColor,
+            child: const DrawerWidget(),
+          ),
           appBar: AppBar(
-            backgroundColor: Colors.grey[200],
+            backgroundColor: AppColors.primaryColor,
             elevation: 0,
-            iconTheme: const IconThemeData(
-              color: Colors.black,
+            iconTheme:  IconThemeData(
+              color: AppColors.textWhite,
               size: 30,
             ),
           ),
