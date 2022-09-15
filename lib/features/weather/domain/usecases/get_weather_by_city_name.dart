@@ -11,8 +11,9 @@ class GetWeatherByCityNameUseCase {
 
   GetWeatherByCityNameUseCase(this.baseWeatherRepository);
 
-  Future<Either<Failure, WeatherEntities>> call(String cityName) async {
-    return await baseWeatherRepository.getWeatherByCityName(cityName);
+  Future<Either<Failure, WeatherEntities>> call(WeatherParameters parameters) async {
+    return await baseWeatherRepository.getWeatherByCityName(parameters);
   }
 }
+
 

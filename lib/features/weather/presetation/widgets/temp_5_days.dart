@@ -30,7 +30,7 @@ class Temp5DaysWidget extends StatelessWidget {
               height: context.height * 0.4,
               width: context.width * 0.9,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: AppColors.whiteWithOpacity,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Padding(
@@ -48,7 +48,7 @@ class Temp5DaysWidget extends StatelessWidget {
                       children: [
                         CustomText(
                           text: myDate == inDay ? 'Today' : myDate,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w600,
                         ),
                         const Spacer(),
@@ -60,7 +60,7 @@ class Temp5DaysWidget extends StatelessWidget {
                         CustomText(
                           text:
                               '  ${state.weatherEntities!.forecast.forecastday[index].day.dailyChanceOfRain}%',
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w300,
                         ),
                         const SizedBox(
@@ -86,7 +86,7 @@ class Temp5DaysWidget extends StatelessWidget {
                           text:
                               '${(state.weatherEntities!.forecast.forecastday[index].day.maxtempC).toInt()}° '
                               '${(state.weatherEntities!.forecast.forecastday[index].day.mintempC).toInt()}°',
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           size: 20,
                           fontWeight: FontWeight.w600,
                         ),

@@ -29,7 +29,7 @@ class TempAllHourInDay extends StatelessWidget {
               height: context.height * 0.25,
               width: context.width * 0.9,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: AppColors.whiteWithOpacity,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: ListView.builder(
@@ -52,7 +52,7 @@ class TempAllHourInDay extends StatelessWidget {
                           children: [
                             CustomText(
                               text: myTime,
-                              color: AppColors.textBlack,
+                              color: AppColors.textWhite,
                               fontWeight: FontWeight.w500,
                               size: 18,
                             ),
@@ -70,7 +70,7 @@ class TempAllHourInDay extends StatelessWidget {
                             CustomText(
                               text:
                                   '${(state.weatherEntities!.forecast.forecastday[0].hour[index].tempC).toInt()}°',
-                              color: AppColors.textBlack,
+                              color: AppColors.textWhite,
                               fontWeight: FontWeight.w500,
                               size: 22,
                             ),
@@ -91,6 +91,7 @@ class TempAllHourInDay extends StatelessWidget {
                                   text:
                                       '${state.weatherEntities!.forecast.forecastday[0].hour[index].chanceOfRain}%',
                                   fontWeight: FontWeight.w300,
+                                  color: AppColors.textWhite,
                                 ),
                               ],
                             ),

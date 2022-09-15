@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/features/weather/presetation/cubit/cubit.dart';
 import 'package:weather_app/features/weather/presetation/cubit/state.dart';
 
+import '../../../../core/utils/app_theme_colors.dart';
 import '../../../../core/utils/assets_images_path.dart';
 import '../../../../core/widgets/custom_text.dart';
 
@@ -19,9 +20,10 @@ class FavWidget extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               Icons.location_on,
               size: 20,
+              color: AppColors.textWhite,
             ),
             const SizedBox(
               width: 2,
@@ -30,6 +32,7 @@ class FavWidget extends StatelessWidget {
               text: state.weatherEntities!.location.name,
               fontWeight: FontWeight.w700,
               size: 20,
+              color: AppColors.textWhite,
             ),
             const SizedBox(
               width: 20,
@@ -40,10 +43,11 @@ class FavWidget extends StatelessWidget {
               sunIcon,
             ),
             const SizedBox(
-              height: 5,
+              width: 5,
             ),
             CustomText(
               text: '${(state.weatherEntities!.current.tempC).toInt()}°',
+              color: AppColors.textWhite,
             ),
           ],
         );

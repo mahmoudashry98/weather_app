@@ -5,7 +5,7 @@ import '../../../../core/error/failures.dart';
 import '../entities/weather.dart';
 
 abstract class BaseWeatherRepository {
-  Future<Either<Failure, WeatherEntities>> getWeatherByCityName(String cityName);
+  Future<Either<Failure, WeatherEntities>> getWeatherByCityName(WeatherParameters parameters);
 
    Future<Either<Failure, WeatherEntities>> getForcatWeatherByCityName(WeatherParameters parameters);
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lottie/lottie.dart';
+import 'package:weather_app/core/utils/app_string.dart';
 import 'package:weather_app/features/weather/presetation/cubit/state.dart';
 
 import '../../../../core/utils/app_theme_colors.dart';
@@ -28,9 +29,8 @@ class CityTempWidget extends StatelessWidget {
 
           case RequestState.loaded:
             return Container(
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0),
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
                 ),
@@ -51,10 +51,10 @@ class CityTempWidget extends StatelessWidget {
                               '${(state.weatherEntities!.current.tempC).toInt()}°',
                           size: 65,
                           fontWeight: FontWeight.w300,
-                          color: Colors.black54,
+                          color: AppColors.textWhite,
                         ),
                         LottieBuilder.network(
-                          'https://assets1.lottiefiles.com/packages/lf20_jqfghjiz.json',
+                          AppString.gifSun,
                           height: 100,
                           width: 100,
                           fit: BoxFit.fill,
@@ -64,17 +64,17 @@ class CityTempWidget extends StatelessWidget {
                     Row(
                       children: [
                         CustomText(
-                          text: state.weatherEntities!.location.country,
+                          text: state.weatherEntities!.location.name,
                           size: 35,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                         ),
                         const SizedBox(
                           width: 5,
                         ),
                         Icon(
                           Icons.location_on,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           size: 30,
                         ),
                       ],
@@ -86,15 +86,15 @@ class CityTempWidget extends StatelessWidget {
                       text:
                           '${(state.weatherEntities!.current.tempC).toInt()} °/'
                           '${(state.weatherEntities!.forecast.forecastday[0].day.mintempC).toInt()}°'
-                          'Feels like ${(state.weatherEntities!.current.feelslikeC).toInt()}°',
-                      color: Colors.black54,
+                          '${AppString.upperfeelsLike} ${(state.weatherEntities!.current.feelslikeC).toInt()}°',
+                      color: AppColors.textWhite,
                       size: 18,
                       fontWeight: FontWeight.w500,
                     ),
-                    const CustomText(
+                    CustomText(
                       text: 'Sat,7:45 pm',
                       fontWeight: FontWeight.w500,
-                      color: Colors.black54,
+                      color: AppColors.textWhite,
                       size: 18,
                     ),
                   ],

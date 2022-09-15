@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/config/routes/app_routes.dart';
+import 'package:weather_app/core/utils/app_string.dart';
 import 'package:weather_app/core/utils/media_query_values.dart';
-import 'package:weather_app/features/weather/presetation/cubit/cubit.dart';
-import 'package:weather_app/features/weather/presetation/cubit/state.dart';
 import 'package:weather_app/features/weather/presetation/widgets/widget_favourite_secation.dart';
 
+import '../../../../core/utils/app_theme_colors.dart';
 import '../../../../core/utils/assets_images_path.dart';
-import '../../../../core/utils/enum.dart';
 import '../../../../core/widgets/custom_text.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -22,9 +20,12 @@ class DrawerWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Row(
-              children: const [
-                Spacer(),
-                Icon(Icons.settings),
+              children: [
+                const Spacer(),
+                Icon(
+                  Icons.settings,
+                  color: AppColors.textWhite,
+                ),
               ],
             ),
           ),
@@ -32,22 +33,25 @@ class DrawerWidget extends StatelessWidget {
             height: 20,
           ),
           Row(
-            children: const [
+            children: [
               Icon(
                 Icons.star,
                 size: 30,
+                color: AppColors.textWhite,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               CustomText(
-                text: 'Favourite location',
+                text: AppString.favouriteLocation,
                 fontWeight: FontWeight.w400,
+                color: AppColors.textWhite,
               ),
-              Spacer(),
+              const Spacer(),
               Icon(
                 Icons.info_outline_rounded,
                 size: 30,
+                color: AppColors.textWhite,
               ),
             ],
           ),
@@ -58,23 +62,25 @@ class DrawerWidget extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(10),
             height: 2,
-            color: Colors.grey[400],
+            color: AppColors.lightGrey,
           ),
           const SizedBox(
             height: 20,
           ),
           Row(
-            children: const [
+            children: [
               Icon(
                 Icons.add_location_outlined,
                 size: 30,
+                color: AppColors.textWhite,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               CustomText(
-                text: 'Other locations',
+                text: AppString.otherLocations,
                 fontWeight: FontWeight.w400,
+                color: AppColors.textWhite,
               ),
             ],
           ),
@@ -84,17 +90,19 @@ class DrawerWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.location_on,
                 size: 20,
+                color: AppColors.textWhite,
               ),
               const SizedBox(
                 width: 2,
               ),
-              const CustomText(
+              CustomText(
                 text: 'Cairo',
                 fontWeight: FontWeight.w700,
                 size: 20,
+                color: AppColors.textWhite,
               ),
               const SizedBox(
                 width: 20,
@@ -104,8 +112,9 @@ class DrawerWidget extends StatelessWidget {
                 width: 30,
                 sunIcon,
               ),
-              const CustomText(
+              CustomText(
                 text: '  33°',
+                color: AppColors.textWhite,
               ),
             ],
           ),
@@ -120,13 +129,14 @@ class DrawerWidget extends StatelessWidget {
               height: context.height * 0.069,
               width: context.width * 0.5,
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.4),
+                color: AppColors.whiteWithOpacity,
                 borderRadius: BorderRadius.circular(25),
               ),
-              child: const Center(
+              child: Center(
                 child: CustomText(
-                  text: 'Manage location',
+                  text: AppString.manageLocation,
                   fontWeight: FontWeight.w500,
+                  color: AppColors.textWhite,
                 ),
               ),
             ),
@@ -137,23 +147,25 @@ class DrawerWidget extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(10),
             height: 2,
-            color: Colors.grey[400],
+            color: AppColors.lightGrey,
           ),
           const SizedBox(
             height: 20,
           ),
           Row(
-            children: const [
+            children: [
               Icon(
                 Icons.info_outline_rounded,
                 size: 30,
+                color: AppColors.textWhite,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               CustomText(
-                text: 'Report wrong location',
+                text: AppString.reportWrongLocation,
                 fontWeight: FontWeight.w400,
+                color: AppColors.textWhite,
               ),
             ],
           ),
@@ -161,17 +173,19 @@ class DrawerWidget extends StatelessWidget {
             height: 20,
           ),
           Row(
-            children: const [
+            children: [
               Icon(
                 Icons.support_agent_outlined,
                 size: 30,
+                color: AppColors.textWhite,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               CustomText(
-                text: 'Contact us',
+                text: AppString.contactUs,
                 fontWeight: FontWeight.w400,
+                color: AppColors.textWhite,
               ),
             ],
           ),

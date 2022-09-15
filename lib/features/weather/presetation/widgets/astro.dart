@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/core/utils/app_string.dart';
 import 'package:weather_app/core/utils/media_query_values.dart';
 import 'package:weather_app/features/weather/presetation/cubit/cubit.dart';
 import 'package:weather_app/features/weather/presetation/cubit/state.dart';
@@ -24,7 +25,7 @@ class AstroWidget extends StatelessWidget {
           case RequestState.loaded:
             return Container(
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9),
+                color: AppColors.whiteWithOpacity,
                 borderRadius: BorderRadius.circular(25),
               ),
               height: context.height * 0.25,
@@ -37,14 +38,14 @@ class AstroWidget extends StatelessWidget {
                     Column(
                       children: [
                         CustomText(
-                          text: 'Sunrise',
-                          color: AppColors.textBlack,
+                          text: AppString.uppersunrise,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         CustomText(
                           text: state.weatherEntities!.forecast.forecastday[0]
                               .astro.sunrise,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(
@@ -61,14 +62,14 @@ class AstroWidget extends StatelessWidget {
                     Column(
                       children: [
                         CustomText(
-                          text: 'Sunset',
-                          color: AppColors.textBlack,
+                          text: AppString.uppersunset,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         CustomText(
                           text: state.weatherEntities!.forecast.forecastday[0]
                               .astro.sunset,
-                          color: AppColors.textBlack,
+                          color: AppColors.textWhite,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(
